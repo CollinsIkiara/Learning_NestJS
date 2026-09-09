@@ -5,7 +5,6 @@ import { CustomerService } from './customer.service.js';
 @Module({
   imports: [],
   controllers: [CustomerController],
-  providers: [CustomerService],
-  exports: [CustomerService], // Exporting the CustomerService class so that it can be used in other modules, such as the CatsModule.
+  providers: [],
 })
 export class CustomerModule {}
