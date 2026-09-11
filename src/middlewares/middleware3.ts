@@ -7,7 +7,7 @@ export class LoggingMiddleware implements NestMiddleware {
   use(req: Request, res: Response, next: NextFunction) {
     const { method, originalUrl: url } = req;
     const reqTime = new Date().getTime();
-    res.on('finish', () => {
+    res.on('finish', () => {  // Listen for the 'finish' event on the response object to log the request details after the response is sent
       const { statusCode } = res;
       const resTime = new Date().getTime();
       if (statusCode === 201 || statusCode === 200) {
