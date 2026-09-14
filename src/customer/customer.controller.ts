@@ -1,5 +1,8 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, HttpException, HttpStatus, ForbiddenException, BadRequestException, UseFilters } from '@nestjs/common';
 import { CustomerService } from './customer.service.js';
+import { HttpExceptionFilter } from '../exception-filters/http-exception.filter.js';
+import errors from '../config/errors.config.js';
+
 
 @Controller('customer')
 export class CustomerController {
@@ -7,7 +10,7 @@ export class CustomerController {
 
     @Get()
     getAllCustomers() {
-        console.log("Reached controller")
+        throw new BadRequestException(errors.validationFailed);
         return this.customerService.getAllCustomers();
     }
 
